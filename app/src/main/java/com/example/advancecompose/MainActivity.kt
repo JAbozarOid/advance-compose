@@ -1,5 +1,6 @@
 package com.example.advancecompose
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -12,16 +13,20 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.advancecompose.component.BoxActivity
 import com.example.advancecompose.ui.theme.AdvanceComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -49,6 +54,8 @@ class MainActivity : ComponentActivity() {
                     showText(name = "Row 1")
                     showText(name = "Row 2")
                 }
+
+                showButton()
             }
 
 
@@ -63,7 +70,7 @@ class MainActivity : ComponentActivity() {
  * It's better to add modifier from the method parameters
  */
 @Composable
-fun showText(name: String) {
+private fun showText(name: String) {
     Text(
         text = "Hello $name!",
         fontSize = 32.sp,
@@ -78,6 +85,16 @@ fun showText(name: String) {
     )
 }
 
+@Composable
+private fun showButton() {
+    val context = LocalContext.current
+    Button(onClick = {
+        context.startActivity(Intent(context, BoxActivity::class.java))
+    }) {
+        Text(text = "Navigate to Activity")
+    }
+}
+
 /**
  * In Compose there are three different ways to arrange elements
  * column
@@ -87,8 +104,16 @@ fun showText(name: String) {
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun TextPreview() {
     AdvanceComposeTheme {
         showText("Abozar")
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun buttonPreview() {
+    AdvanceComposeTheme {
+        showButton()
     }
 }
