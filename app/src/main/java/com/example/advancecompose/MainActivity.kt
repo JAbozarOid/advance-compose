@@ -5,10 +5,14 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -24,7 +28,15 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            showText(name = "Abozar")
+            Column(
+                modifier = Modifier.background(Color(R.color.black)).fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                showText(name = "Column 1")
+                showText(name = "Column 2")
+                showText(name = "Column 3")
+            }
         }
     }
 }
@@ -33,6 +45,7 @@ class MainActivity : ComponentActivity() {
  * modifier allow us defied how composable should be presented
  * 1- behavior : clickable, draggable..
  * 2- information
+ * It's better to add modifier from the method parameters
  */
 @Composable
 fun showText(name: String) {
@@ -46,9 +59,16 @@ fun showText(name: String) {
             .background(Color(R.color.teal_700))
             .border(2.dp, color = Color.Yellow)
             .padding(8.dp)
-            .fillMaxWidth()
+//            .fillMaxWidth(fraction = 1f)
     )
 }
+
+/**
+ * In Compose there are three different ways to arrange elements
+ * column
+ * row
+ * box
+ */
 
 @Preview(showBackground = true)
 @Composable
