@@ -7,6 +7,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -29,14 +31,27 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             Column(
-                modifier = Modifier.background(Color(R.color.black)).fillMaxWidth(),
+                modifier = Modifier
+                    .background(Color(R.color.red))
+                    .fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
                 showText(name = "Column 1")
                 showText(name = "Column 2")
                 showText(name = "Column 3")
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.Start,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    showText(name = "Row 1")
+                    showText(name = "Row 2")
+                }
             }
+
+
         }
     }
 }
@@ -53,7 +68,7 @@ fun showText(name: String) {
         text = "Hello $name!",
         fontSize = 32.sp,
         fontWeight = FontWeight.Bold,
-        color = Color(R.color.purple_200),
+        color = Color(R.color.red),
         textAlign = TextAlign.Center,
         modifier = Modifier
             .background(Color(R.color.teal_700))
