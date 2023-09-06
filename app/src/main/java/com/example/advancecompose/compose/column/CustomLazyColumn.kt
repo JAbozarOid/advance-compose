@@ -39,7 +39,7 @@ import com.example.advancecompose.ui.theme.AdvanceComposeTheme
  * display custom lazy column with custom items
  */
 @Composable
-fun imageItem(model: TvShow) {
+internal fun imageItem(model: TvShow) {
     Image(
         painter = painterResource(id = model.imageId),
         contentDescription = "image",
@@ -54,7 +54,7 @@ fun imageItem(model: TvShow) {
 
 @Preview(showBackground = false)
 @Composable
-fun imageItemPreview() {
+private fun imageItemPreview() {
     AdvanceComposeTheme {
         imageItem(model = TvShow(imageId = R.drawable.ar))
     }
@@ -62,7 +62,7 @@ fun imageItemPreview() {
 
 
 @Composable
-fun cardItem(model: TvShow, selectedIem: (TvShow) -> Unit) {
+internal fun cardItem(model: TvShow, selectedIem: (TvShow) -> Unit) {
     Card(
         modifier = Modifier
             .padding(10.dp)
@@ -108,7 +108,7 @@ fun cardItem(model: TvShow, selectedIem: (TvShow) -> Unit) {
 
 @Preview(showBackground = false)
 @Composable
-fun cardItemPreview() {
+private fun cardItemPreview() {
     AdvanceComposeTheme {
         cardItem(
             model = TvShow(
@@ -125,7 +125,7 @@ fun cardItemPreview() {
 }
 
 @Composable
-fun displayListData(selectedIem: (TvShow) -> Unit) {
+internal fun displayListData(selectedIem: (TvShow) -> Unit) {
 
     val items = remember { TvShowList.tvShows }
 
@@ -139,7 +139,7 @@ fun displayListData(selectedIem: (TvShow) -> Unit) {
 
 @Preview(showBackground = false)
 @Composable
-fun listDataPreview() {
+private fun listDataPreview() {
     AdvanceComposeTheme {
         displayListData(selectedIem = {})
     }
