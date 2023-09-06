@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.advancecompose.activity.BoxActivity
 import com.example.advancecompose.activity.RecyclerActivity
+import com.example.advancecompose.activity.StateDemoActivity
 import com.example.advancecompose.ui.theme.AdvanceComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -55,6 +56,7 @@ class MainActivity : ComponentActivity() {
 
                 navigateToComponent()
                 navigateToRecycler()
+                navigateToStateActivity()
             }
 
 
@@ -124,5 +126,16 @@ fun TextPreview() {
 fun buttonPreview() {
     AdvanceComposeTheme {
         navigateToComponent()
+    }
+}
+
+@Preview(name = "navigateToStateActivity")
+@Composable
+private fun navigateToStateActivity() {
+    val context = LocalContext.current
+    Button(onClick = {
+        context.startActivity(Intent(context, StateDemoActivity::class.java))
+    }) {
+        Text("navigate to state activity")
     }
 }
