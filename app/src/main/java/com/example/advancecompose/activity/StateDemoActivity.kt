@@ -9,17 +9,16 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 
-val count = mutableStateOf(0)
 
 class StateDemoActivity : ComponentActivity() {
 
-    companion object {
-    }
+    var count by mutableStateOf(0)
 
     /**
      * state in an application is, any value that can change over time
@@ -36,7 +35,9 @@ class StateDemoActivity : ComponentActivity() {
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                showBtn()
+                showBtn(count) {
+                    count = it + 1
+                }
             }
         }
     }
@@ -45,12 +46,11 @@ class StateDemoActivity : ComponentActivity() {
 /**
  * recomposition : changes of the state in ui must be observed by compose
  */
-@Preview(name = "showBtn")
 @Composable
-fun showBtn() {
+fun showBtn(count: Int, updateCount: (Int) -> Unit) {
     Button(onClick = {
-        count.value = count.value + 1
+        updateCount(count)
     }) {
-        Text(text = "the count num is : ${count.value}")
+        Text(text = "the count num is : ${count}")
     }
 }
