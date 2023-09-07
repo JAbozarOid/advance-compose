@@ -3,6 +3,7 @@ package com.example.advancecompose.activity
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -14,11 +15,13 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.example.advancecompose.viewmodel.SampleViewModel
 
 
 class StateDemoActivity : ComponentActivity() {
 
-    var count by mutableStateOf(0)
+    private var count by mutableStateOf(0)
+    private var viewmodel = viewModels<SampleViewModel>()
 
     /**
      * state in an application is, any value that can change over time
@@ -35,8 +38,8 @@ class StateDemoActivity : ComponentActivity() {
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                showBtn(count) {
-                    count = it + 1
+                showBtn(viewmodel.value.count) {
+                    viewmodel.value.increaseCount()
                 }
             }
         }

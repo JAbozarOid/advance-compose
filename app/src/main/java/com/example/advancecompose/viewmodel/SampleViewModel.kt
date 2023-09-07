@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 
 class SampleViewModel : ViewModel() {
 
-    var count by mutableStateOf(0)
+    internal var count by mutableStateOf(0)
 
     fun increaseCount() {
         count++
