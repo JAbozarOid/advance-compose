@@ -20,6 +20,7 @@ import com.example.advancecompose.viewmodel.SampleViewModel
 
 class StateDemoActivity : ComponentActivity() {
 
+    //private var count = mutableStateOf(0)
     private var count by mutableStateOf(0)
     private var viewmodel = viewModels<SampleViewModel>()
 
