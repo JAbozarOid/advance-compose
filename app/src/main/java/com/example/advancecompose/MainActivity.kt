@@ -24,16 +24,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.advancecompose.activity.BoxActivity
+import com.example.advancecompose.activity.FlowActivity
 import com.example.advancecompose.activity.RecyclerActivity
 import com.example.advancecompose.activity.StateDemoActivity
 import com.example.advancecompose.ui.theme.AdvanceComposeTheme
 
 class MainActivity : ComponentActivity() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
+
             Column(
                 modifier = Modifier
                     .background(Color(R.color.red))
@@ -57,6 +59,7 @@ class MainActivity : ComponentActivity() {
                 navigateToComponent()
                 navigateToRecycler()
                 navigateToStateActivity()
+                navigateToFlowActivity()
             }
 
 
@@ -137,5 +140,15 @@ private fun navigateToStateActivity() {
         context.startActivity(Intent(context, StateDemoActivity::class.java))
     }) {
         Text("navigate to state activity")
+    }
+}
+
+@Composable
+private fun navigateToFlowActivity() {
+    val context = LocalContext.current
+    Button(onClick = {
+        context.startActivity(Intent(context, FlowActivity::class.java))
+    }) {
+        Text(text = "Navigate to Flow Activity")
     }
 }
