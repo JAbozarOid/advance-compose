@@ -3,23 +3,25 @@ package com.example.advancecompose.activity
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import com.example.advancecompose.viewmodel.SampleViewModel
 
-val count = mutableStateOf(0)
 
 class StateDemoActivity : ComponentActivity() {
 
-    companion object {
-    }
+    private var count by mutableStateOf(0)
+    private var viewmodel = viewModels<SampleViewModel>()
 
     /**
      * state in an application is, any value that can change over time
@@ -36,7 +38,9 @@ class StateDemoActivity : ComponentActivity() {
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                showBtn()
+                showBtn(viewmodel.value.count) {
+                    viewmodel.value.increaseCount()
+                }
             }
         }
     }
@@ -45,12 +49,11 @@ class StateDemoActivity : ComponentActivity() {
 /**
  * recomposition : changes of the state in ui must be observed by compose
  */
-@Preview(name = "showBtn")
 @Composable
-fun showBtn() {
+fun showBtn(count: Int, updateCount: (Int) -> Unit) {
     Button(onClick = {
-        count.value = count.value + 1
+        updateCount(count)
     }) {
-        Text(text = "the count num is : ${count.value}")
+        Text(text = "the count num is : ${count}")
     }
 }
