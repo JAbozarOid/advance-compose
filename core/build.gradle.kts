@@ -43,6 +43,9 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
 
+    //viewmodel scope
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1")
+
     // Network
     implementation("com.squareup.okhttp3:okhttp:${rootProject.ext.get("okhttp_version")}")
     implementation("com.squareup.okhttp3:logging-interceptor:${rootProject.ext.get("okhttp_version")}")
