@@ -14,6 +14,6 @@ abstract class UseCase<PARAM, RESULT>(
         }
     }
 
-    protected abstract fun execute(p: PARAM): RESULT
+    protected abstract suspend fun execute(p: PARAM): RESULT
 
 }

@@ -1,4 +1,4 @@
-package com.example.advancecompose.data
+package com.example.advancecompose.data.local
 
 import com.example.advancecompose.R
 import com.example.advancecompose.model.TvShow
