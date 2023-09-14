@@ -30,7 +30,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.advancecompose.R
-import com.example.advancecompose.data.TvShowList
+import com.example.advancecompose.data.local.TvShowList
 import com.example.advancecompose.model.TvShow
 import com.example.advancecompose.ui.theme.AdvanceComposeTheme
 
