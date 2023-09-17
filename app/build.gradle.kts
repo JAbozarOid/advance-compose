@@ -97,6 +97,8 @@ dependencies {
 
     // Moshi
     api("com.squareup.moshi:moshi-kotlin:${rootProject.ext.get("moshi")}")
+    implementation(platform("androidx.compose:compose-bom:2023.03.00"))
+    androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
     kapt("com.squareup.moshi:moshi-kotlin-codegen:${rootProject.ext.get("moshi")}")
     api("com.squareup.moshi:moshi-adapters:${rootProject.ext.get("moshi")}")
 
