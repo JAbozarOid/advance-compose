@@ -61,7 +61,7 @@ abstract class BaseViewModel<EVENT : ViewEvent, EFFECT : ViewSideEffect, STATE :
     abstract fun setInitialState(): STATE
     private val initialState by lazy { setInitialState() }
     private val _uiState = mutableStateOf(initialState)
-    private val state get() = _uiState
+    val state get() = _uiState
 
     protected fun setState(stateHandler: STATE.() -> STATE) {
         _uiState.value = state.value.stateHandler()

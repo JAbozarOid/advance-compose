@@ -5,7 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 
 @Composable
-internal fun mainNavigation(navHostController: NavHostController) {
+internal fun MainNavigation(navHostController: NavHostController) {
 
     NavHost(
         route = "main",
