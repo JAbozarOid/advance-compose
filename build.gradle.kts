@@ -15,7 +15,7 @@ buildscript {
         set("okhttp_version","4.10.0")
         set("retrofit_version","2.9.0")
 
-        set("moshi","1.13.0")
+        set("moshi","1.14.0")
 
         set("hilt_version",2.44)
         set("hilt_navigation_compose","1.0.0")

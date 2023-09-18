@@ -13,6 +13,11 @@
         android:theme="@style/Theme.AdvanceCompose"
         tools:targetApi="31">
         <activity
+            android:name=".activity.NavigationActivity"
+            android:exported="false"
+            android:label="@string/title_activity_navigation"
+            android:theme="@style/Theme.AdvanceCompose" />
+        <activity
             android:name=".activity.FlowActivity"
             android:exported="false"
             android:label="@string/title_activity_flow"
