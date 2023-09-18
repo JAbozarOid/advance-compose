@@ -4,6 +4,8 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
+import com.example.advancecompose.ui.home.HomeContract
+import com.example.advancecompose.ui.home.HomeScreen
 
 internal fun NavGraphBuilder.mainNavGraph(
     navController: NavController
@@ -12,7 +14,13 @@ internal fun NavGraphBuilder.mainNavGraph(
 
         // we need  to provide all the screens
         composable(route = Route.Home.route) {
-            // TODO home screen
+            HomeScreen(onNavigationRequested = {
+                when (it) {
+                    is HomeContract.Effect.Navigation.ToProductDetail -> {
+                        navController.navigate(Route.ProductDetail.createRoute(it.product))
+                    }
+                }
+            })
         }
     }
 }
