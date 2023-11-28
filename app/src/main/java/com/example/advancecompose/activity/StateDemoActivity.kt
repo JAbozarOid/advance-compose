@@ -39,6 +39,8 @@ class StateDemoActivity : ComponentActivity() {
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
+
+
                 showBtn(viewmodel.value.count) {
                     viewmodel.value.increaseCount()
                 }
