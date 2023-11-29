@@ -12,12 +12,15 @@ buildscript {
         set("targetSdkVersion", 33)
         set("compileSdkVersion", 33)
 
-        set("okhttp_version","4.10.0")
-        set("retrofit_version","2.9.0")
+        set("okhttp_version", "4.10.0")
+        set("retrofit_version", "2.9.0")
 
-        set("moshi","1.14.0")
+        set("moshi", "1.14.0")
 
-        set("hilt_version",2.44)
-        set("hilt_navigation_compose","1.0.0")
+        set("hilt_version", 2.44)
+        set("hilt_navigation_compose", "1.0.0")
+
+        set("koin_version", "3.3.2")
+        set("koin_ksp_version", "1.1.0")
     }
 }
