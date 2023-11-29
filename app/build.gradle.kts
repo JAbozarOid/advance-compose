@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     kotlin("kapt")
     id("com.google.dagger.hilt.android")
+    //id("com.google.devtools.ksp")
 }
 
 android {
@@ -72,6 +73,7 @@ android {
 dependencies {
 
     implementation(project(":core"))
+    implementation(project(":data"))
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
@@ -107,6 +109,11 @@ dependencies {
     kapt("com.google.dagger:hilt-android-compiler:${rootProject.ext.get("hilt_version")}")
     kapt("com.google.dagger:hilt-compiler:${rootProject.ext.get("hilt_version")}")
     implementation("androidx.hilt:hilt-navigation-compose:${rootProject.ext.get("hilt_navigation_compose")}")
+
+    // koin
+    implementation("io.insert-koin:koin-android:${rootProject.ext.get("koin_version")}")
+    implementation("io.insert-koin:koin-annotations:${rootProject.ext.get("koin_ksp_version")}")
+    //ksp("io.insert-koin:koin-ksp-compiler:${rootProject.ext.get("koin_ksp_version")}")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
