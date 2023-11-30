@@ -1,6 +1,6 @@
 package com.example.data.repository
 
-import com.example.data.model.TestModel
+import com.example.data.model.DataTestModel
 import com.example.data.model.toEntity
 import com.example.data.source.api.ApiSource
 import com.example.data.source.datasource.DatastoreSource
@@ -8,8 +8,12 @@ import com.example.data.source.db.DbSource
 import com.github.kittinunf.result.Result
 import com.github.kittinunf.result.flatMap
 import com.github.kittinunf.result.map
+import org.koin.core.annotation.Single
 
-//@Single
+/**
+ * repository can be used only in domain, not in view
+ */
+@Single
 class ModernRepository internal constructor(
     private val apiSource: ApiSource,
     private val dbSource: DbSource,
@@ -29,13 +33,13 @@ class ModernRepository internal constructor(
      * you may use mapError of flatMapError operators ti bypass this behaviour.
      */
 
-    suspend fun getData(): Result<List<TestModel>, Exception> =
+    suspend fun getData(): Result<List<DataTestModel>, Exception> =
         apiSource.getData().map { list -> list.map { it.toEntity() } }
             .flatMap { fromApi ->
                 dbSource.getData().map { list -> list.map { it.toEntity() } }
                     .map { fromDb -> fromApi + fromDb }
             }.map { fromApiAndDb ->
-                fromApiAndDb + TestModel(testData = datastoreSource.getLastValue())
+                fromApiAndDb + DataTestModel(testData = datastoreSource.getLastValue())
             }
 
 
