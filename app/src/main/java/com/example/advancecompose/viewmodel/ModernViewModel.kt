@@ -3,13 +3,13 @@ package com.example.advancecompose.viewmodel
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.data.repository.ModernRepository
+import com.example.domain.usecase.GetDataWithLogicAppliedUseCase
 import kotlinx.coroutines.launch
 import org.koin.android.annotation.KoinViewModel
 
 @KoinViewModel
 class ModernViewModel(
-    private val repository: ModernRepository
+    private val useCase: GetDataWithLogicAppliedUseCase
 ) : ViewModel() {
 
     /**
@@ -19,7 +19,7 @@ class ModernViewModel(
      */
     fun getData() {
         viewModelScope.launch {
-            repository.getData().fold({ list ->
+            useCase().fold({ list ->
                 for (element in list) {
                     Log.d("TAG", "getData: ${element.testData}")
                 }
