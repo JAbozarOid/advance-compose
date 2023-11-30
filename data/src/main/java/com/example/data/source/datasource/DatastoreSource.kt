@@ -1,6 +1,8 @@
 package com.example.data.source.datasource
 
-//@Single
+import org.koin.core.annotation.Single
+
+@Single
 internal class DatastoreSource {
     fun getLastValue() : String = "datastore1"
 }
