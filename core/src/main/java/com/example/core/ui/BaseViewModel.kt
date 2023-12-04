@@ -3,6 +3,7 @@ package com.example.core.ui
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.core.util.log
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -22,6 +23,7 @@ abstract class BaseViewModel<EVENT : ViewEvent, EFFECT : ViewSideEffect, STATE :
     abstract fun handleEvent(event: EVENT)
     fun setEvent(event: EVENT) {
         viewModelScope.launch(dispatcher) {
+            log(elementName = "UserAction:SetEvent", mviElement = event)
             _event.emit(event)
         }
     }
@@ -32,6 +34,7 @@ abstract class BaseViewModel<EVENT : ViewEvent, EFFECT : ViewSideEffect, STATE :
     private fun collectEvent() {
         viewModelScope.launch(dispatcher) {
             _event.collect {
+                log(elementName = "CollectEvent", mviElement = it)
                 handleEvent(it)
             }
         }
@@ -52,6 +55,7 @@ abstract class BaseViewModel<EVENT : ViewEvent, EFFECT : ViewSideEffect, STATE :
     // this method will be called by all of the view models classes
     protected fun setEffect(effectHandler: () -> EFFECT) {
         viewModelScope.launch(dispatcher) {
+            log(elementName = "SetEffect", mviElement = effectHandler)
             _effect.emit(effectHandler())
         }
     }
@@ -64,6 +68,7 @@ abstract class BaseViewModel<EVENT : ViewEvent, EFFECT : ViewSideEffect, STATE :
     val state get() = _uiState
 
     protected fun setState(stateHandler: STATE.() -> STATE) {
+        log(elementName = "SetState", mviElement = state.value.stateHandler())
         _uiState.value = state.value.stateHandler()
     }
 

@@ -17,11 +17,10 @@ internal sealed class Route(val route: String) {
 
     object ProductDetail : Route("$MAIN_APP/product-details?$PRODUCT={$PRODUCT}") {
         fun createRoute(product: Product) = "$MAIN_APP/product-details?$PRODUCT={${
-            JSONProvider.toJson(
-                product,
-                Product::class.java
-            )
+        JSONProvider.toJson(
+            product,
+            Product::class.java
+        )
         }}"
     }
-
 }

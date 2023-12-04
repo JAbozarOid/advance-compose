@@ -5,5 +5,5 @@ import retrofit2.http.GET
 internal interface ProductApiService {
 
     @GET("products")
-    suspend fun fetchProducts() : ProductListResponse
+    suspend fun fetchProducts(): ProductListResponse
 }

@@ -11,7 +11,7 @@ buildscript {
     extra.apply {
         set("minSdkVersion", 24)
         set("targetSdkVersion", 33)
-        set("compileSdkVersion", 33)
+        set("compileSdkVersion", 34)
 
         set("okhttp_version", "4.10.0")
         set("retrofit_version", "2.9.0")
@@ -23,6 +23,8 @@ buildscript {
 
         set("koin_version", "3.3.2")
         set("koin_ksp_version", "1.1.0")
+
+        set("timber","5.0.1")
     }
 }
 

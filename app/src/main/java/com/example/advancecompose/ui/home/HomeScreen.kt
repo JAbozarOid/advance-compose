@@ -20,13 +20,12 @@ import kotlinx.coroutines.flow.onEach
 internal fun HomeScreen(
     onNavigationRequested: (navigationEffect: HomeContract.Effect.Navigation) -> Unit
 ) {
-
     // instance of view model
     val vm: HomeViewModel = hiltViewModel()
 
     val state = vm.state.value
 
-    //collect all of the effects
+    // collect all of the effects
     LaunchedEffect("HomeScreen") {
         vm.effect.onEach { effect ->
             when (effect) {
@@ -50,7 +49,6 @@ private fun HomeContent(state: HomeContract.State, onEventSent: () -> Unit) {
                 .fillMaxSize()
                 .padding(paddingValues)
         ) {
-
             when (state.dataState) {
                 DataState.INITIAL -> {
                     // just a blank screen
@@ -80,6 +78,4 @@ private fun FailUI() {
 
 @Composable
 private fun ContentBody() {
-
 }
-

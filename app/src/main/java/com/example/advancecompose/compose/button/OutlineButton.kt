@@ -6,7 +6,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.advancecompose.ui.theme.AdvanceComposeTheme
 
-
 @Composable
 internal fun outlineButton() {
     OutlinedButton(onClick = {}) {

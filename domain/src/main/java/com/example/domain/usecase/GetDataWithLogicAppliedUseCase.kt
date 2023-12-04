@@ -21,7 +21,13 @@ class GetDataWithLogicAppliedUseCase internal constructor(
 
         return data
     }
+
+    companion object {
+        const val DELAY = 100L
+    }
 }
+
+
 
 
 //maybe warning rise

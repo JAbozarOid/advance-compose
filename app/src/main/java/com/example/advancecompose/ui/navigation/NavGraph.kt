@@ -11,7 +11,6 @@ internal fun NavGraphBuilder.mainNavGraph(
     navController: NavController
 ) {
     navigation(route = Route.Root.route, startDestination = Route.Home.route) {
-
         // we need  to provide all the screens
         composable(route = Route.Home.route) {
             HomeScreen(onNavigationRequested = {

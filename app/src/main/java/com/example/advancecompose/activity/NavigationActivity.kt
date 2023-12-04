@@ -22,7 +22,6 @@ class NavigationActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     MainNavigation(navHostController = rememberNavController())
-
                 }
             }
         }
