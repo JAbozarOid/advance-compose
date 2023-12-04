@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -19,6 +21,11 @@
             android:theme="@style/Theme.AdvanceCompose" />
         <activity
             android:name=".activity.FlowActivity"
+            android:exported="false"
+            android:label="@string/title_activity_flow"
+            android:theme="@style/Theme.AdvanceCompose" />
+        <activity
+            android:name=".activity.HomeActivity"
             android:exported="false"
             android:label="@string/title_activity_flow"
             android:theme="@style/Theme.AdvanceCompose" />
