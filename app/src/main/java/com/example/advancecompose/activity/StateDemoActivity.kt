@@ -17,10 +17,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.example.advancecompose.viewmodel.SampleViewModel
 
-
 class StateDemoActivity : ComponentActivity() {
 
-    //private var count = mutableStateOf(0)
+    // private var count = mutableStateOf(0)
     private var count by mutableStateOf(0)
     private var viewmodel = viewModels<SampleViewModel>()
 
@@ -39,8 +38,6 @@ class StateDemoActivity : ComponentActivity() {
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-
-
                 showBtn(viewmodel.value.count) {
                     viewmodel.value.increaseCount()
                 }
@@ -57,6 +54,6 @@ fun showBtn(count: Int, updateCount: (Int) -> Unit) {
     Button(onClick = {
         updateCount(count)
     }) {
-        Text(text = "the count num is : ${count}")
+        Text(text = "the count num is : $count")
     }
 }

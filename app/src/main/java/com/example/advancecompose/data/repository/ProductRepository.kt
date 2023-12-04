@@ -4,5 +4,5 @@ import com.example.advancecompose.domain.entity.Product
 import com.example.core.domain.Result
 
 internal interface ProductRepository {
-    suspend fun fetchProducts() : Result<List<Product>>
+    suspend fun fetchProducts(): Result<List<Product>>
 }

@@ -40,7 +40,6 @@ internal class HomeContract {
             data class ToProductDetail(val product: Product) : Navigation()
         }
     }
-
 }
 
 internal enum class DataState {
