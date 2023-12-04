@@ -51,7 +51,6 @@ internal fun displaySnackBar() {
                 }
             }
         }) {
-
             Text(text = "Display Snackbar")
         }
     }

@@ -115,6 +115,15 @@ dependencies {
     implementation("io.insert-koin:koin-annotations:${rootProject.ext.get("koin_ksp_version")}")
     //ksp("io.insert-koin:koin-ksp-compiler:${rootProject.ext.get("koin_ksp_version")}")
 
+    //timber
+    implementation("com.jakewharton.timber:timber:5.0.1")
+
+    // ----------
+    //region Result : if you are working on JVM or Android only project
+    implementation("com.github.kittinunf.result:result-jvm:5.3.0")//for JVM support
+    //endregion Result
+    // ----------
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")

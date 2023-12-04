@@ -6,7 +6,6 @@ import androidx.navigation.compose.NavHost
 
 @Composable
 internal fun MainNavigation(navHostController: NavHostController) {
-
     NavHost(
         route = "main",
         navController = navHostController,
