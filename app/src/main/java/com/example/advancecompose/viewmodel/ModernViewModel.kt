@@ -23,7 +23,7 @@ class ModernViewModel(
                 for (element in list) {
                     Log.d("TAG", "getData: ${element.testData}")
                 }
-            }, { exception -> Log.e("TAG", "getData: ${exception.message}",exception) })
+            }, { exception -> Log.e("TAG", "getData: ${exception.message}", exception) })
         }
     }
 }

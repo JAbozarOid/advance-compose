@@ -11,12 +11,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
-
 @Composable
 internal fun iconButton() {
     IconButton(onClick = { }) {
         Icon(
-            //painter = painterResource(id = R.drawable.ic_person_24),
+            // painter = painterResource(id = R.drawable.ic_person_24),
             Icons.Filled.Refresh,
             contentDescription = "icon button",
             tint = Color.DarkGray,

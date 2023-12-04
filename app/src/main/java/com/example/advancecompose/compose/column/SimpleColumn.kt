@@ -14,7 +14,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.advancecompose.ui.theme.AdvanceComposeTheme
 
-
 /**
  * to make a column be scrollable we need to do two things
  * 1- Get an instance of ScrollState
@@ -34,6 +33,7 @@ fun scrollableColumnDemo() {
         }
     }
 }
+
 @Preview(showBackground = false)
 @Composable
 fun scrollableColumnPreview() {

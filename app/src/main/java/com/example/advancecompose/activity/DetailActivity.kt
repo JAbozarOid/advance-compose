@@ -91,7 +91,6 @@ fun detailView(model: TvShow) {
                 text = "The total rate is : ${model.rate}",
                 style = MaterialTheme.typography.headlineSmall
             )
-
         }
     }
 }

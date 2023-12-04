@@ -29,6 +29,5 @@ internal class HomeViewModel @Inject constructor(
 
             else -> {}
         }
-
     }
 }

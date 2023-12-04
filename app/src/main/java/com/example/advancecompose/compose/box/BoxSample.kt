@@ -27,7 +27,6 @@ internal fun boxSample(modifier: Modifier) {
             .size(100.dp, 150.dp)
 
     ) {
-
         Box(
             modifier
                 .background(color = Color.Yellow)
@@ -38,7 +37,6 @@ internal fun boxSample(modifier: Modifier) {
                 showImage()
                 showButton()
             }
-
         }
 
         Text(text = "Abozar")
@@ -56,7 +54,8 @@ fun BoxPreview() {
 @Composable
 private fun showButton() {
     Button(
-        onClick = {}, colors = ButtonDefaults.textButtonColors(contentColor = Color.Blue),
+        onClick = {},
+        colors = ButtonDefaults.textButtonColors(contentColor = Color.Blue),
         shape = CircleShape,
         modifier = Modifier
             .border(
@@ -76,4 +75,3 @@ fun ButtonPreview() {
         showButton()
     }
 }
-

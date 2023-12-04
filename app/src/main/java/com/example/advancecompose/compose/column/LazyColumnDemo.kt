@@ -40,7 +40,6 @@ fun lazyColumnDemo(selectedIem: (String) -> Unit) {
 fun lazyColumnPreview() {
     AdvanceComposeTheme {
         lazyColumnDemo {
-
         }
     }
 }

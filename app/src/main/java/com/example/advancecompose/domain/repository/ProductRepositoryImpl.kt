@@ -24,6 +24,5 @@ internal class ProductRepositoryImpl @Inject constructor(private val productApiS
         } catch (e: Exception) {
             Result.Error(e)
         }
-
     }
 }

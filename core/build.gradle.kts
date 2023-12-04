@@ -63,6 +63,9 @@ dependencies {
     kapt("com.google.dagger:hilt-android-compiler:${rootProject.ext.get("hilt_version")}")
     kapt("com.google.dagger:hilt-compiler:${rootProject.ext.get("hilt_version")}")
 
+    //timber
+    implementation("com.jakewharton.timber:timber:5.0.1")
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")

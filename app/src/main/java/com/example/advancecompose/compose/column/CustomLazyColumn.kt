@@ -34,7 +34,6 @@ import com.example.advancecompose.data.local.TvShowList
 import com.example.advancecompose.model.TvShow
 import com.example.advancecompose.ui.theme.AdvanceComposeTheme
 
-
 /**
  * display custom lazy column with custom items
  */
@@ -60,7 +59,6 @@ private fun imageItemPreview() {
     }
 }
 
-
 @Composable
 internal fun cardItem(model: TvShow, selectedIem: (TvShow) -> Unit) {
     Card(
@@ -74,7 +72,8 @@ internal fun cardItem(model: TvShow, selectedIem: (TvShow) -> Unit) {
             modifier = Modifier
                 .padding(5.dp)
                 .fillMaxWidth()
-                .clickable { selectedIem(model) }, verticalAlignment = Alignment.CenterVertically
+                .clickable { selectedIem(model) },
+            verticalAlignment = Alignment.CenterVertically
         ) {
             imageItem(model = model)
             Column {
@@ -102,7 +101,6 @@ internal fun cardItem(model: TvShow, selectedIem: (TvShow) -> Unit) {
                 }
             }
         }
-
     }
 }
 
@@ -119,14 +117,13 @@ private fun cardItemPreview() {
                 rate = 8.6
             ),
             selectedIem = {
-
-            })
+            }
+        )
     }
 }
 
 @Composable
 internal fun displayListData(selectedIem: (TvShow) -> Unit) {
-
     val items = remember { TvShowList.tvShows }
 
     LazyColumn(contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp)) {
@@ -134,7 +131,6 @@ internal fun displayListData(selectedIem: (TvShow) -> Unit) {
             cardItem(model = it, selectedIem = selectedIem)
         })
     }
-
 }
 
 @Preview(showBackground = false)

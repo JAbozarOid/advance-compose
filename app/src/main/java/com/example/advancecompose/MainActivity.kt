@@ -35,7 +35,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-
             Column(
                 modifier = Modifier
                     .background(Color(R.color.red))
@@ -61,8 +60,6 @@ class MainActivity : ComponentActivity() {
                 navigateToStateActivity()
                 navigateToFlowActivity()
             }
-
-
         }
     }
 }
