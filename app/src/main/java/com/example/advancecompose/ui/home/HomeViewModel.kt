@@ -1,3 +1,4 @@
+/*
 package com.example.advancecompose.ui.home
 
 import androidx.lifecycle.viewModelScope
@@ -45,9 +46,11 @@ internal class HomeViewModel @Inject constructor(
 
     override fun setInitialState() = HomeContract.State()
     override fun handleEvent(event: HomeContract.Event) {
-        /**
+        */
+/**
          * handle all the events will be happen on the screen like select product
-         */
+         *//*
+
 
         when (event) {
             is HomeContract.Event.SelectProduct -> {
@@ -63,3 +66,4 @@ internal class HomeViewModel @Inject constructor(
         }
     }
 }
+*/
