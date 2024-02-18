@@ -1,4 +1,5 @@
 pluginManagement {
+    includeBuild("build-logic")
     repositories {
         google()
         mavenCentral()
@@ -15,6 +16,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "AdvanceCompose"
 include(":app")
-include(":core")
-include(":data")
-include(":domain")
