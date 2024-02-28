@@ -1,181 +1,76 @@
 package com.example.advancecompose
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import androidx.navigation.compose.rememberNavController
-import com.example.advancecompose.activity.BoxActivity
-import com.example.advancecompose.activity.FlowActivity
-import com.example.advancecompose.activity.RecyclerActivity
-import com.example.advancecompose.activity.StateDemoActivity
-import com.example.advancecompose.activity.HomeActivity
-import com.example.advancecompose.ui.home.HomeScreen
-import com.example.advancecompose.ui.navigation.MainNavigation
-import com.example.advancecompose.ui.theme.AdvanceComposeTheme
+import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import com.example.advancecompose.viewmodel.MainViewModel
+import com.example.advancecompose.ui.EvaApp
+import com.example.advancecompose.model.MainViewState
+import com.example.advancecompose.model.MainAction
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class MainActivity : ComponentActivity() {
+internal class MainActivity : ComponentActivity() {
 
+
+    private val viewModel: MainViewModel by viewModels()
+
+    @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        var uiState: MainViewState by mutableStateOf(viewModel.initialState)
 
-        /*setContent {
-            Column(
-                modifier = Modifier
-                    .background(Color(R.color.red))
-                    .fillMaxWidth(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
-            ) {
-                ShowText(name = "Column 1")
-                ShowText(name = "Column 2")
-                ShowText(name = "Column 3")
-
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.Start,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    ShowText(name = "Row 1")
-                    ShowText(name = "Row 2")
-                }
-
-                NavigateToComponent()
-                NavigateToRecycler()
-                NavigateToStateActivity()
-                NavigateToFlowActivity()
-                NavigateToHomeScreen()
+        lifecycleScope.launch {
+            viewModel.process(MainAction.ViewCreated)
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.viewStateFlow.onEach {
+                    uiState = it
+                }.collect()
             }
-        }*/
+        }
 
+        enableEdgeToEdge()
         setContent {
-            /*Surface(
-                modifier = Modifier.fillMaxSize(),
-                color = MaterialTheme.colorScheme.background
-            ) {
-                MainNavigation(navHostController = rememberNavController())
-            }*/
-            HomeScreen(onNavigationRequested = {})
+            enableEdgeToEdge(
+                statusBarStyle = SystemBarStyle.auto(
+                    android.graphics.Color.TRANSPARENT,
+                    android.graphics.Color.TRANSPARENT,
+                ),
+                navigationBarStyle = SystemBarStyle.auto(
+                    lightScrim = lightScrim,
+                    darkScrim = darkScrim
+                )
+            )
+            EvaApp(windowSizeClass = calculateWindowSizeClass(this))
         }
     }
-}
 
-/**
- * modifier allow us defied how composable should be presented
- * 1- behavior : clickable, draggable..
- * 2- information
- * It's better to add modifier from the method parameters
- */
-@Composable
-private fun ShowText(name: String) {
-    Text(
-        text = "Hello $name!",
-        fontSize = 32.sp,
-        fontWeight = FontWeight.Bold,
-        color = Color(R.color.red),
-        textAlign = TextAlign.Center,
-        modifier = Modifier
-            .background(Color(R.color.teal_700))
-            .border(2.dp, color = Color.Yellow)
-            .padding(8.dp)
-//            .fillMaxWidth(fraction = 1f)
-    )
-}
 
-@Composable
-private fun NavigateToComponent() {
-    val context = LocalContext.current
-    Button(onClick = {
-        context.startActivity(Intent(context, BoxActivity::class.java))
-    }) {
-        Text(text = "Navigate to Component Activity")
-    }
-}
+    /**
+     * The default light scrim, as defined by androidx and the platform:
+     * https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:activity/activity/src/main/java/androidx/activity/EdgeToEdge.kt;l=35-38;drc=27e7d52e8604a080133e8b842db10c89b4482598
+     */
+    private val lightScrim = android.graphics.Color.argb(0xe6, 0xFF, 0xFF, 0xFF)
 
-@Composable
-private fun NavigateToRecycler() {
-    val context = LocalContext.current
-    Button(onClick = {
-        context.startActivity(Intent(context, RecyclerActivity::class.java))
-    }) {
-        Text(text = "Navigate to Recycler Activity")
-    }
-}
+    /**
+     * The default dark scrim, as defined by androidx and the platform:
+     * https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:activity/activity/src/main/java/androidx/activity/EdgeToEdge.kt;l=40-44;drc=27e7d52e8604a080133e8b842db10c89b4482598
+     */
+    private val darkScrim = android.graphics.Color.argb(0x80, 0x1b, 0x1b, 0x1b)
 
-/**
- * In Compose there are three different ways to arrange elements
- * column
- * row
- * box
- */
 
-@Preview(showBackground = true)
-@Composable
-fun TextPreview() {
-    AdvanceComposeTheme {
-        ShowText("Abozar")
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun ButtonPreview() {
-    AdvanceComposeTheme {
-        NavigateToComponent()
-    }
-}
-
-@Preview(name = "navigateToStateActivity")
-@Composable
-private fun NavigateToStateActivity() {
-    val context = LocalContext.current
-    Button(onClick = {
-        context.startActivity(Intent(context, StateDemoActivity::class.java))
-    }) {
-        Text("navigate to state activity")
-    }
-}
-
-@Composable
-private fun NavigateToFlowActivity() {
-    val context = LocalContext.current
-    Button(onClick = {
-        context.startActivity(Intent(context, FlowActivity::class.java))
-    }) {
-        Text(text = "Navigate to Flow Activity")
-    }
-}
-
-@Composable
-private fun NavigateToHomeScreen() {
-    val context = LocalContext.current
-    Button(onClick = {
-        context.startActivity(Intent(context, HomeActivity::class.java))
-    }) {
-        Text(text = "Navigate to Home Activity")
-    }
 }

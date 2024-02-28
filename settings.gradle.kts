@@ -14,5 +14,11 @@ dependencyResolutionManagement {
     }
 }
 
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 rootProject.name = "AdvanceCompose"
 include(":app")
+include(":core:data")
+include(":core:ui")
+include(":core:designsystem")
+include(":feature:login")
+include(":core:domain")
