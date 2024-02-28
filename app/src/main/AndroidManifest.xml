@@ -15,33 +15,6 @@
         android:theme="@style/Theme.AdvanceCompose"
         tools:targetApi="31">
         <activity
-            android:name=".activity.NavigationActivity"
-            android:exported="false"
-            android:label="@string/title_activity_navigation"
-            android:theme="@style/Theme.AdvanceCompose" />
-        <activity
-            android:name=".activity.FlowActivity"
-            android:exported="false"
-            android:label="@string/title_activity_flow"
-            android:theme="@style/Theme.AdvanceCompose" />
-        <activity
-            android:name=".activity.HomeActivity"
-            android:exported="false"
-            android:label="@string/title_activity_flow"
-            android:theme="@style/Theme.AdvanceCompose" />
-        <activity
-            android:name=".activity.BoxActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.RecyclerActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.DetailActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.StateDemoActivity"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
