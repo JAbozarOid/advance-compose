@@ -74,3 +74,7 @@ internal class MainActivity : ComponentActivity() {
 
 
 }
+
+private inline fun test(data: () -> Unit) {
+
+}
