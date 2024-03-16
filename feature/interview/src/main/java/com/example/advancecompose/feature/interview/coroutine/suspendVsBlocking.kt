@@ -23,7 +23,7 @@ private val dispatcher = Executors.newSingleThreadExecutor().asCoroutineDispatch
 
 private fun testSuspending() {
     GlobalScope.launch(dispatcher) {
-        println("before task 1")
+        println("suspending call before task 1")
         timeTakingTask() // {
         // when this line of code is executed the dispatcher thread will be free because to do another task
         // in the method timeTakingTask there is another thread which is responsible
@@ -33,39 +33,39 @@ private fun testSuspending() {
         // "after task 1" -> continue from the where was suspended
         // "after task 2"
         // }
-        println("after task 1")
+        println("suspending call after task 1")
     }
     GlobalScope.launch(dispatcher) {
-        println("before task 2")
+        println("suspending call before task 2")
         timeTakingTask()
-        println("after task 2")
+        println("suspending call after task 2")
     }
 }
 
 private fun testBlocking() {
     GlobalScope.launch(dispatcher) {
         runBlocking {
-            println("before task 1")
+            println("blocking call before task 1")
             timeTakingTask() //{
             // at this line the dispatcher thread will be block and not allowed to do another task because of runBlocking
             // and it will not be free, it will be block
             // the "before task 1" will be print and after 5 second delay the line
             // "after task 1" will be printed and it is the same for the task 2
             // }
-            println("after task 1")
+            println("blocking call after task 1")
         }
     }
     GlobalScope.launch(dispatcher) {
         runBlocking {
-            println("before task 2")
+            println("blocking call before task 2")
             timeTakingTask()
-            println("after task 2")
+            println("blocking call after task 2")
         }
     }
 }
 
 
 fun main() {
-    //testSuspending()
+    testSuspending()
     testBlocking()
 }
