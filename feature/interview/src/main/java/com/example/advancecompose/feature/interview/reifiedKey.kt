@@ -35,7 +35,7 @@ object WithT {
 
     // if doesn't use reified keyword the compiler error will be happen -> cannot be cast to class User
     // reified means something more concrete or real
-    inline fun <reified T> Gson.fromJson(json: String): T {
+    private inline fun <reified T> Gson.fromJson(json: String): T {
         return fromJson(json, object : TypeToken<T>(){}.type)
     }
 }
