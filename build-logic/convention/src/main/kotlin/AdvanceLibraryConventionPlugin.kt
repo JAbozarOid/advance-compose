@@ -5,7 +5,7 @@ import com.helper.DependencyType
 import com.helper.Dimensions
 import com.helper.ORG_JETBRAINS_KOTLIN_NAME
 import com.helper.configureKotlin
-import com.helper.evaAppConstant
+import com.helper.advanceAppConstant
 import com.helper.libs
 import com.helper.setCompileOption
 import org.gradle.api.Plugin
@@ -31,7 +31,7 @@ private fun Project.applyPlugins() {
 
 private fun Project.configureProject() {
     android {
-        compileSdk = evaAppConstant.compileSdk
+        compileSdk = advanceAppConstant.compileSdk
 
         configureDefaultConfig()
         configureBuildType()
@@ -55,7 +55,7 @@ private fun LibraryExtension.configureBuildType() {
 
 private fun LibraryExtension.configureDefaultConfig() {
     defaultConfig {
-        minSdk = evaAppConstant.minSdk
+        minSdk = advanceAppConstant.minSdk
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")

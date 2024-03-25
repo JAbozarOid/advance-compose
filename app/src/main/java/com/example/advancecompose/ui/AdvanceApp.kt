@@ -16,14 +16,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTagsAsResourceId
 import com.example.advancecompose.navigation.AppNavHost
-import com.example.advancecompose.ui.AppState
-import com.example.advancecompose.ui.rememberMarkAppState
 
 @OptIn(
     ExperimentalComposeUiApi::class,
 )
 @Composable
-fun EvaApp(
+fun AdvanceApp(
     windowSizeClass: WindowSizeClass,
     appState: AppState = rememberMarkAppState(windowSizeClass = windowSizeClass)
 ) {

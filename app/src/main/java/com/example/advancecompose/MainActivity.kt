@@ -15,7 +15,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.advancecompose.viewmodel.MainViewModel
-import com.example.advancecompose.ui.EvaApp
+import com.example.advancecompose.ui.AdvanceApp
 import com.example.advancecompose.model.MainViewState
 import com.example.advancecompose.model.MainAction
 import dagger.hilt.android.AndroidEntryPoint
@@ -55,7 +55,7 @@ internal class MainActivity : ComponentActivity() {
                     darkScrim = darkScrim
                 )
             )
-            EvaApp(windowSizeClass = calculateWindowSizeClass(this))
+            AdvanceApp(windowSizeClass = calculateWindowSizeClass(this))
         }
     }
 

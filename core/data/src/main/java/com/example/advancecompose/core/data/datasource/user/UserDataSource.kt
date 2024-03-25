@@ -15,6 +15,6 @@ class UserDataSourceImpl @Inject constructor() : UserDataSource {
 
 private val mockedUserModel = UserModel.create(
     UserModelParam(
-        userNameParam = "eva user"
+        userNameParam = "sample user"
     )
 )
