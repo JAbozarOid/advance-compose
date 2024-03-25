@@ -9,7 +9,7 @@ import com.helper.BuildTypes
 import com.helper.Dimensions
 import com.helper.configureAndroidCompose
 import com.helper.configureKotlin
-import com.helper.evaAppConstant
+import com.helper.advanceAppConstant
 import com.helper.libs
 import com.helper.setCompileOption
 import org.gradle.api.Plugin
@@ -43,7 +43,7 @@ class AdvanceApplicationConventionPlugin : Plugin<Project> {
 
 private fun Project.configureProject() {
     android {
-        compileSdk = evaAppConstant.compileSdk
+        compileSdk = advanceAppConstant.compileSdk
         configureDefaultConfig()
         configureBuildType()
         configureFlavors()
@@ -78,11 +78,11 @@ fun BaseAppModuleExtension.configureFlavors() {
 
 private fun BaseAppModuleExtension.configureDefaultConfig() {
     defaultConfig {
-        applicationId = evaAppConstant.packageName
-        minSdk = evaAppConstant.minSdk
-        targetSdk = evaAppConstant.targetSdk
-        versionCode = evaAppConstant.versionCode
-        versionName = evaAppConstant.versionName
+        applicationId = advanceAppConstant.packageName
+        minSdk = advanceAppConstant.minSdk
+        targetSdk = advanceAppConstant.targetSdk
+        versionCode = advanceAppConstant.versionCode
+        versionName = advanceAppConstant.versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 

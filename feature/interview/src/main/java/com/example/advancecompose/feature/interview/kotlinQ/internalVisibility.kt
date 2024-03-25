@@ -1,4 +1,4 @@
-package com.example.advancecompose.feature.interview
+package com.example.advancecompose.feature.interview.kotlinQ
 
 // is access able inside of the module
 // class
