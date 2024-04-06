@@ -1,5 +1,6 @@
 package com.example.advancecompose.model
 
+import com.example.advancecompose.core.ui.model.ActionResult
 import com.example.advancecompose.core.ui.model.IActionProcessor
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -9,9 +10,10 @@ import javax.inject.Inject
 
 internal class MainActionProcessorImpl @Inject constructor() :
     IActionProcessor<MainAction.ViewCreated, MainMutation, MainEvent> {
-    override fun invoke(action: MainAction.ViewCreated): Flow<Pair<MainMutation?, MainEvent?>> {
-        return flow { getStartupData() }
+    override suspend fun onAction(action: MainAction.ViewCreated): ActionResult<MainMutation, MainEvent> {
+        TODO("Not yet implemented")
     }
+
 }
 
 private suspend fun FlowCollector<Pair<MainMutation?, MainEvent?>>.getStartupData() {

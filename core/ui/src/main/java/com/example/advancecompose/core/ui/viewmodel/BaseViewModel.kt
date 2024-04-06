@@ -18,7 +18,7 @@ import kotlin.reflect.KClass
 abstract class BaseViewModel<State, Action : IAction, Mutation : IMutation, Event>(
     actionProcessors: Map<KClass<out Action>, IActionProcessor<*, Mutation, Event>> = mapOf(),
     reducers: Map<KClass<out Mutation>, IReducer<*, State>> = mapOf(),
-    initialState: State,
+    val initialState: State,
     dispatcherProvider: DispatcherProvider
 ) :
     ViewModel() {

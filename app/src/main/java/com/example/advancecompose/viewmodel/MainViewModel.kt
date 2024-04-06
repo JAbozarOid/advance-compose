@@ -1,6 +1,7 @@
 package com.example.advancecompose.viewmodel
 
 import com.example.advancecompose.core.ui.di.annotation.ForViewModel
+import com.example.advancecompose.core.ui.dispatcher.DispatcherProvider
 import com.example.advancecompose.core.ui.model.IActionProcessor
 import com.example.advancecompose.core.ui.model.IReducer
 import com.example.advancecompose.core.ui.viewmodel.BaseViewModel
@@ -18,8 +19,10 @@ internal class MainViewModel @Inject constructor(
     actionProcessors: Map<KClass<out MainAction>, @JvmSuppressWildcards IActionProcessor<*, MainMutation, MainEvent>>,
     @ForViewModel(MainViewModel::class)
     reducers: Map<KClass<out MainMutation>, @JvmSuppressWildcards IReducer<*, MainViewState>>,
+    dispatcherProvider: DispatcherProvider
 ) : BaseViewModel<MainViewState, MainAction, MainMutation, MainEvent>(
     actionProcessors = actionProcessors,
+    initialState = MainViewState(),
     reducers = reducers,
-    initialState = MainViewState()
+    dispatcherProvider = dispatcherProvider
 )
