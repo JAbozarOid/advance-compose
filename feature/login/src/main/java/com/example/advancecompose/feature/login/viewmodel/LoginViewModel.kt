@@ -1,6 +1,7 @@
 package com.example.advancecompose.feature.login.viewmodel
 
 import com.example.advancecompose.core.ui.di.annotation.ForViewModel
+import com.example.advancecompose.core.ui.dispatcher.DispatcherProvider
 import com.example.advancecompose.core.ui.model.IActionProcessor
 import com.example.advancecompose.core.ui.model.IReducer
 import com.example.advancecompose.core.ui.viewmodel.BaseViewModel
@@ -18,8 +19,10 @@ internal class LoginViewModel @Inject constructor(
     actionProcessors: Map<KClass<out LoginAction>, @JvmSuppressWildcards IActionProcessor<*, LoginMutation, LoginEvent>>,
     @ForViewModel(LoginViewModel::class)
     reducers: Map<KClass<out LoginMutation>, @JvmSuppressWildcards IReducer<*, LoginViewState>>,
+    dispatcherProvider: DispatcherProvider
 ) : BaseViewModel<LoginViewState, LoginAction, LoginMutation, LoginEvent>(
     actionProcessors = actionProcessors,
+    initialState = LoginViewState(),
     reducers = reducers,
-    initialState = LoginViewState()
+    dispatcherProvider = dispatcherProvider
 )

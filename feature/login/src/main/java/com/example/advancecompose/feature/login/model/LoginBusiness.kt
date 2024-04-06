@@ -7,7 +7,7 @@ import com.example.advancecompose.core.ui.model.IViewState
 import com.example.advancecompose.feature.login.entity.User
 
 internal sealed interface LoginEvent : IEvent {
-    data class CreateAccountEvent(val user: User) : LoginEvent
+    data class CreateAccountEvent(val message: String) : LoginEvent
 }
 
 internal sealed interface LoginMutation : IMutation {

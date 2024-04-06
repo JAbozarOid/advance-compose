@@ -72,9 +72,4 @@ internal class MainActivity : ComponentActivity() {
      */
     private val darkScrim = android.graphics.Color.argb(0x80, 0x1b, 0x1b, 0x1b)
 
-
-}
-
-private inline fun test(data: () -> Unit) {
-
 }

@@ -1,6 +1,8 @@
 package com.example.advancecompose.core.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
+import com.example.advancecompose.core.ui.dispatcher.DispatcherProvider
+import com.example.advancecompose.core.ui.entity.DisplayedError
 import com.example.advancecompose.core.ui.model.IAction
 import com.example.advancecompose.core.ui.model.IActionProcessor
 import com.example.advancecompose.core.ui.model.IMutation
@@ -16,16 +18,19 @@ import kotlin.reflect.KClass
 abstract class BaseViewModel<State, Action : IAction, Mutation : IMutation, Event>(
     actionProcessors: Map<KClass<out Action>, IActionProcessor<*, Mutation, Event>> = mapOf(),
     reducers: Map<KClass<out Mutation>, IReducer<*, State>> = mapOf(),
-    val initialState: State
+    val initialState: State,
+    dispatcherProvider: DispatcherProvider
 ) :
     ViewModel() {
 
     protected val model: Model<State, Action, Mutation, Event> by model(
         actionProcessors = actionProcessors,
         reducers = reducers,
-        initialState = initialState
+        initialState = initialState,
+        dispatcherProvider = dispatcherProvider
     )
 
+    val errorFlow : Flow<DisplayedError> = model.errorFlow
     val viewStateFlow: Flow<State>
         get() = model.viewStateFlow.flatMapConcat {
             return@flatMapConcat flow { manipulateState(it) }

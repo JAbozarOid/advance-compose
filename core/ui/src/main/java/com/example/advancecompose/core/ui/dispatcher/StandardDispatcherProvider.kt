@@ -1,6 +1,5 @@
 package com.example.advancecompose.core.ui.dispatcher
 
-import com.example.advancecompose.core.ui.dispatcher.DispatcherProvider
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 
