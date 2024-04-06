@@ -55,7 +55,7 @@ internal fun LoginView(
         viewModel.eventFlow.collect {
             when (it) {
                 is LoginEvent.CreateAccountEvent -> {
-                    showSnack.invoke(it.user.name)
+
                 }
             }
         }
