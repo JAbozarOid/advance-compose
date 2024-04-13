@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.channelFlow
 import kotlinx.coroutines.launch
 import java.util.concurrent.Executors
+import kotlin.random.Random
 
 private val dispatcher = Executors.newSingleThreadExecutor().asCoroutineDispatcher()
 
@@ -54,10 +55,10 @@ private suspend fun sampleCollectColdFlow() {
 
 private fun sampleHotFlow() : Flow<Int> {
     val hotFlow = MutableSharedFlow<Int>(replay = 1)
-    (0..5).forEach {
+    for (i in 0 until 10) {
         GlobalScope.launch(Dispatchers.Default) {
-            hotFlow.emit(it)
-            delay(1000)
+            hotFlow.emit(Random.nextInt(1,1000))
+            delay(200)
         }
     }
     return hotFlow
@@ -69,17 +70,18 @@ fun main() {
         sampleCollectColdFlow()
     }
 
+    val hotCollector = sampleHotFlow()
+
     GlobalScope.launch(Dispatchers.IO) {
-        val hotCollector1 = sampleHotFlow()
-        hotCollector1.collect {
+        hotCollector.collect {
             println("Collector A : $it")
             println("that's all")
         }
     }
 
     GlobalScope.launch(Dispatchers.IO) {
-        val hotCollector1 = sampleHotFlow()
-        hotCollector1.collect {
+        delay(1000)
+        hotCollector.collect {
             println("Collector B : $it")
             println("that's all")
         }
