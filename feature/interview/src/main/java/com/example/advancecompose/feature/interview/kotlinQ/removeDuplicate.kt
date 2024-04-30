@@ -12,11 +12,23 @@ package com.example.advancecompose.feature.interview.kotlinQ
 data class Mentors(val id: Int, val name: String)
 
 val mentors = arrayOf(
-    Mentors(id = 0, name = "abozar"),
-    Mentors(id = 1, name = "abozar"),
-    Mentors(id = 2, name = "atiye"),
-    Mentors(id = 3, name = "sazi"),
-    Mentors(id = 4, name = "mamad")
+    Mentors(id = 0, name = "a"),
+    Mentors(id = 1, name = "b"),
+    Mentors(id = 2, name = "o"),
+    Mentors(id = 3, name = "z"),
+    Mentors(id = 4, name = "a"),
+    Mentors(id = 4, name = "r"),
+    Mentors(id = 4, name = "r"),
+    Mentors(id = 4, name = "a"),
+    Mentors(id = 4, name = "g"),
+    Mentors(id = 4, name = "h"),
+    Mentors(id = 4, name = "i"),
+    Mentors(id = 4, name = "b"),
+    Mentors(id = 4, name = "d"),
+    Mentors(id = 4, name = "o"),
+    Mentors(id = 4, name = "u"),
+    Mentors(id = 4, name = "s"),
+    Mentors(id = 4, name = "t"),
 )
 
 /**
