@@ -91,6 +91,14 @@ private fun configureObject(): Person {
 fun main() {
     println("the person object id is ${configureObject().id} and name is ${configureObject().name}")
     getRandomInt()
+    returnContextObject()
+    returnLambdaResult()
+    localVariable()
+    resultWithoutLet()
+    resultWithLet()
+    resultWithLetMethodReference()
+    useWith()
+    runWithoutExtension()
 }
 
 /**
@@ -101,4 +109,154 @@ fun getRandomInt(): Int {
         println("getRandomInt() generated value $it")
     }
 }
+
+/**
+ * return value
+ * apply, also : return the context object -> continue chaining function calls on the same object
+ * let, run, with : return the lambda result -> assign the result to a variable
+ */
+private fun returnContextObject(): MutableList<Double> {
+    val list = mutableListOf<Double>()
+    return list.also {
+        println("print the list $it")
+    }.apply {
+        this.add(3.1)
+        this.add(2.2)
+        this.add(4.3)
+        this.add(1.4)
+        println("print the populated list $this")
+    }.also {
+        println("print the sorted list $it")
+    }
+}
+
+private fun returnLambdaResult() {
+    val list = mutableListOf<String>("one", "two", "three")
+    val addValue = list.run {
+        add("four")
+        add("five")
+        add("six")
+        add("seven")
+        count {
+            it.endsWith("e")
+        }
+    }
+    println("counts with end of e are $addValue")
+}
+
+/**
+ * ignore return value and
+ * use scope function to create temporary scope for local variable
+ */
+private fun localVariable() {
+    val num = mutableListOf<String>("one", "two", "three", "four", "five", "six")
+    with(num) {
+        val first = first()
+        val last = last()
+        println("the local variables are for first item $first and for the last item $last")
+    }
+}
+
+/**
+ * let
+ * the context object as an argument : it
+ * the return value is lambda result
+ * execute a code block contain non-null values
+ */
+private fun resultWithoutLet() {
+    val list = mutableListOf<String>("one", "two", "three", "four", "five")
+    val result = list.map {
+        it.length
+    }.filter {
+        it > 3
+    }
+    println("the result without let is $result")
+}
+
+private fun resultWithLet() {
+    val list = mutableListOf<String>("one", "two", "three", "four", "five")
+    list.map {
+        it.length
+    }.filter {
+        it > 3
+    }.let {
+        println("the result with let $it")
+    }
+}
+
+// method reference means ::
+private fun resultWithLetMethodReference() {
+    val list = mutableListOf<String>("one", "two", "three", "four", "five")
+    list.map {
+        it.length
+    }.filter {
+        it > 3
+    }.let(
+        ::println
+    )
+}
+
+
+/**
+ * with
+ * the context object as an receiver : this
+ * the return value is lambda result
+ * it is not an extension function
+ * use when you don't need to use the returned result.
+ */
+private fun useWith() {
+    val nums = mutableListOf("one", "two", "three")
+    val firstAndLast = with(nums) {
+        println("the first element is ${first()}")
+        println("the first element is ${last()}")
+    }
+    println(firstAndLast)
+}
+
+/**
+ * - run as extension function
+ *      the context object as an receiver : this
+ *      the return value is lambda result
+ * - run as non-extension function
+ *      has no context object with return the lambda result
+ */
+
+private fun runExtensionFunction() {
+    val str = "Abozar"
+    str.run {
+        println("the length of abozar is ${this.length}")
+    }
+}
+
+private fun runWithoutExtension() {
+    val hexNumRegex = run {
+        val digits = "0-9"
+        val hexDigits = "A-Fa-f"
+        val sign = "+-"
+
+        Regex("[$sign]?[$digits$hexDigits]+")
+    }
+
+    for (match in hexNumRegex.findAll("+123 -FFFF !%*& 88 XYZ")) {
+        println("the regex value is ${match.value}")
+    }
+}
+
+
+/**
+ * apply
+ * the context object as an receiver : this
+ * the return value is object itself
+ * multiple call chains for more complex processing.
+ */
+
+
+/**
+ * also
+ * the context object as an argument : it
+ * the return value is object itself
+ */
+
+
+
 
