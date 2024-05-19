@@ -15,6 +15,34 @@ import kotlinx.coroutines.launch
  */
 
 /**
+ * What is structured concurrency in Kotlin coroutine?
+ * we can use structured concurrency to do three things
+ * 1- Cancel work when it is no longer needed
+ * 2- Keep track of work while it’s running.
+ * 3- Signal errors when a coroutine fails
+ * *** Structured concurrency guarantees that when a coroutine errors, its caller or scope is notified.
+ * 1- When a scope(view model scope, lifecycle scope) cancels, all of its coroutines cancel.
+ * 2- When a suspend fun returns, all of its work is done.
+ * 3- When a coroutine errors, its caller or scope is notified.”
+ */
+
+/**
+ * What does it mean when we say coroutine is lightweight
+ * 1- many coroutines can run in a single thread due to support suspension, doesn't block the thread the coroutine is running
+ * 2- suspending save memory over blocking while supporting many concurrent operations
+ * 3- fewer memory leaks
+ * 4- use structured concurrency to run operations within a scope
+ */
+
+/**
+ * what is the difference between coroutine and rxjava
+ * - both of them use thread pools for concurrency, but they have different default thread pool implementation
+ * - Coroutines use a concept called Dispatchers to determine which thread or threads to execute code on.
+ *      - By default, when you launch a coroutine without specifying a dispatcher, it runs in the context of the current thread or a specific thread if specified.
+ * - RxJava also provides schedulers for controlling concurrency, and they have similar characteristics to coroutines' dispatchers.
+ */
+
+/**
  * dispatchers :
  * dispatchers help coroutine in deciding the thread on which work has to be done.
  * IO :
