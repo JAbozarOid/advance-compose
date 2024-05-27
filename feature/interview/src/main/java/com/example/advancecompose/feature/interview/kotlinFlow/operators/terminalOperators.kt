@@ -1,4 +1,4 @@
-package com.example.advancecompose.feature.interview.kotlinFlow
+package com.example.advancecompose.feature.interview.kotlinFlow.operators
 
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.reduce
