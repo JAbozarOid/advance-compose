@@ -19,10 +19,25 @@ private val dispatcher = Executors.newSingleThreadExecutor().asCoroutineDispatch
  *      1- emit values when there is a collector
  *      2- does not store data
  *      3- can't have multiple collectors
+ *      4- flow : sequence of values can be synchronously computed and delivered  over time
  * hot flow :
  *      1- emit values even there is no collector
  *      2- can store data
  *      3- can have multiple collectors
+ *      4- shared-flow : allows multiple collectors to listen to the same stream
+ *      5- stateflow : stores the last state and emit to all collectors
+ *
+ */
+
+/**
+ * Observable : {
+ *                  - Single/Flowable
+ *                  - Flow/stateFlow/SharedFlow
+ *                  }
+ * Subscriber : {
+ *                  - observe / subscribe
+ *                  - collect
+ *                  }
  */
 
 

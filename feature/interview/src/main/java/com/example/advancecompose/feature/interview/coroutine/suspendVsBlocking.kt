@@ -1,6 +1,5 @@
 package com.example.advancecompose.feature.interview.coroutine
 
-import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.asCoroutineDispatcher
