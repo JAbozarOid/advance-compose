@@ -1,5 +1,7 @@
 package com.example.advancecompose.feature.interview.coroutine
 
+import kotlinx.coroutines.CoroutineScope
+
 /**
  * Async programming
  * 1- parallel operation
