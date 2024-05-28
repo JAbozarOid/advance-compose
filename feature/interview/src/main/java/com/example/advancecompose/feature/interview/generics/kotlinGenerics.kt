@@ -103,7 +103,7 @@ fun main() {
 // *** invariant
 // class A and B in not relevant to each other "OR" class A extend class B and vis versa
 open class A
-class B : A()
+class B
 
 // SomeClass in not relevant to both A and B --> it means SomeClass<A> and SomeClass<B> are invariant to each other
 class InvariantClass<T>
@@ -116,7 +116,7 @@ fun test(arg: InvariantClass<A>) {
 }
 
 fun callTestFun() {
-    // test(c) --> here there is compiler ERROR because SomeClass<B> in not subclass of SomeClass<A> although class B is subclass of class A
+     // test(c) // --> here there is compiler ERROR because SomeClass<B> in not subclass of SomeClass<A> although class B is subclass of class A
 }
 
 
