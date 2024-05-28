@@ -98,4 +98,95 @@ fun main() {
     //endregion
 }
 
+//------------------------------------invariant / covariance / contravariant--------------------------------------------------------------
+
+// *** invariant
+// class A and B in not relevant to each other "OR" class A extend class B and vis versa
+open class A
+class B
+
+// SomeClass in not relevant to both A and B --> it means SomeClass<A> and SomeClass<B> are invariant to each other
+class InvariantClass<T>
+
+val a = InvariantClass<A>()
+val b = InvariantClass<B>()
+val c = InvariantClass<B>()
+
+fun test(arg: InvariantClass<A>) {
+}
+
+fun callTestFun() {
+     // test(c) // --> here there is compiler ERROR because SomeClass<B> in not subclass of SomeClass<A> although class B is subclass of class A
+}
+
+
+//region real example of invariant
+abstract class ClothingItem(val price: Float)
+class Shoe(price: Float, val size: Float) : ClothingItem(price = price)
+class Jacket(price: Float, val hasZipper: Boolean) : ClothingItem(price = price)
+
+class Basket<T>(
+    val firstItem: T,
+    val secondItem: T
+) // in this example Basket is generic and want to calculate the items
+
+fun printBasketPrice(basket: Basket<ClothingItem>) {
+    val firstPrice = basket.firstItem.price
+    val secondPrice = basket.secondItem.price
+    val total = firstPrice + secondPrice
+    println("the total price of $firstPrice + $secondPrice = $total")
+}
+
+val firstItem = Shoe(price = 5f, size = 37f)
+val secondItem = Shoe(price = 5f, size = 40f)
+val showBasket = Basket(firstItem, secondItem)
+
+fun callPrintBasketPrice() {
+    // printBasketPrice(showBasket) --> // *** there is compiler error because Basket<Shoe> is not subtype of Basket<ClothingItem>
+}
+//endregion
+
+/**
+ * covariant
+ * if we want to fix the above compile error in printBasketPrice(showBasket) we must use Covariance as below
+ * CovarianceClass<out T> in covariant on T
+ * out T is equivalent to extend
+ */
+// region covariant
+open class C
+class D : C()
+
+class CovarianceClass<out T> // hierarchy هایرارکی را رعایت میکند
+
+val test1 = CovarianceClass<C>()
+val test2 = CovarianceClass<D>()
+
+// input is parent
+fun testCovariance(arg: CovarianceClass<C>) {
+
+}
+
+fun callCovariance() {
+    testCovariance(test2) // there is no compiler error
+}
+// endregion
+
+
+// *** contravariant is vis versa of covariant
+/**
+ * in T is equivalent of super in java --> <? super E>
+ *
+ */
+class ContravariantClass<in T> // هایرارکی را رعایت نمیکند hierarchy
+
+// input is child
+fun testContravariant(args: ContravariantClass<D>) {
+
+}
+
+fun callContravariant() {
+    // testContravariant(test1) // there is compile error
+
+}
+
 
