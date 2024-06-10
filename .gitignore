@@ -14,3 +14,7 @@
 .cxx
 local.properties
 .idea
+data/build
+domain/build
+core/build
+build-logic
