@@ -105,4 +105,4 @@ advance-android-library-compose = { id = "advance.android.library.compose", vers
 advance-android-library = { id = "advance.android.library", version = "unspecified" }
 advance-android-dagger-hilt = { id = "advance.android.dagger.hilt", version = "unspecified" }
 advance-android-features = { id = "advance.android.features", version = "unspecified" }
-
+advance-android-lint = { id = "advance.android.lint", version = "unspecified" }
