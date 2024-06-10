@@ -17,4 +17,4 @@ local.properties
 data/build
 domain/build
 core/build
-build-logic
+build-logic/convention
