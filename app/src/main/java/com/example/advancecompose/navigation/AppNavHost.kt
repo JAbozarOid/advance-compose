@@ -3,6 +3,8 @@ package com.example.advancecompose.navigation
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
+import com.example.advancecompose.feature.converter.navigation.converterGraph
+import com.example.advancecompose.feature.converter.navigation.converterRoute
 import com.example.advancecompose.feature.login.navigation.loginGraph
 import com.example.advancecompose.feature.login.navigation.loginRoute
 import com.example.advancecompose.ui.AppState
@@ -12,7 +14,7 @@ fun AppNavHost(
     appState: AppState,
     onShowSnackBar: suspend (String, String?) -> Boolean,
     modifier: Modifier = Modifier,
-    startDestination: String = loginRoute
+    startDestination: String = converterRoute
 ) {
 
     val navController = appState.navController
@@ -21,12 +23,14 @@ fun AppNavHost(
         startDestination = startDestination,
         modifier = modifier
     ) {
-        loginGraph(
+       /* loginGraph(
             onLoginClicked = {},
             onCreateAccountClicked = {},
             onBackClicked = { navController.popBackStack() },
             showSnack = { message -> onShowSnackBar.invoke(message, "retry".uppercase()) }
-        )
+        )*/
+
+        converterGraph()
     }
 
 }
