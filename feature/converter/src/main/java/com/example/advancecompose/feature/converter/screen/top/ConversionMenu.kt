@@ -23,12 +23,19 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.toSize
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.advancecompose.feature.converter.Conversion
+import com.example.advancecompose.feature.converter.ConverterViewModel
 
 @Composable
-fun ConversionMenu(list: List<Conversion>, modifier: Modifier = Modifier) {
+fun ConversionMenu(
+    list: List<Conversion>,
+    modifier: Modifier = Modifier,
+    convert: (Conversion) -> Unit
+) {
 
     // when the state of a parameter change it means the value is changed, during recomposition remember helps us
     // to get the new value and not the initialize value, remember update the value
@@ -88,10 +95,22 @@ fun ConversionMenu(list: List<Conversion>, modifier: Modifier = Modifier) {
                 }, onClick = {
                     displayingText = conversion.description
                     expanded = false
+                    convert(conversion)
                 })
 
             }
         }
     }
 
+}
+
+@Preview
+@Composable
+fun PreviewConversionMenu(
+    converterViewModel: ConverterViewModel = viewModel()
+) {
+
+    ConversionMenu(list = converterViewModel.getConversions()){
+
+    }
 }
