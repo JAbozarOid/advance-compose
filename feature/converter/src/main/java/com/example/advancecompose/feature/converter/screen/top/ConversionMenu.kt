@@ -34,6 +34,7 @@ import com.example.advancecompose.feature.converter.ConverterViewModel
 fun ConversionMenu(
     list: List<Conversion>,
     modifier: Modifier = Modifier,
+    isLandscape: Boolean,
     convert: (Conversion) -> Unit
 ) {
 
@@ -58,26 +59,50 @@ fun ConversionMenu(
         Icons.Filled.KeyboardArrowDown
 
     Column {
-        // drop down menu in compose is associate with text field
-        OutlinedTextField(
-            value = displayingText, onValueChange = {
-                displayingText = it
-            },
-            textStyle = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.Bold),
-            modifier = modifier
-                .fillMaxWidth()
-                .onGloballyPositioned { cordinates ->
-                    textFieldSize = cordinates.size.toSize()
+
+        if (isLandscape) {
+            // drop down menu in compose is associate with text field
+            OutlinedTextField(
+                value = displayingText, onValueChange = {
+                    displayingText = it
                 },
-            label = { Text(text = "Conversion Type") },
-            trailingIcon = {
-                Icon(icon, contentDescription = "icon",
-                    modifier.clickable {
-                        expanded = !expanded
-                    })
-            },
-            readOnly = true
-        )
+                textStyle = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.Bold),
+                modifier = modifier
+                    .onGloballyPositioned { cordinates ->
+                        textFieldSize = cordinates.size.toSize()
+                    },
+                label = { Text(text = "Conversion Type") },
+                trailingIcon = {
+                    Icon(icon, contentDescription = "icon",
+                        modifier.clickable {
+                            expanded = !expanded
+                        })
+                },
+                readOnly = true
+            )
+        }else {
+            OutlinedTextField(
+                value = displayingText, onValueChange = {
+                    displayingText = it
+                },
+                textStyle = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.Bold),
+                modifier = modifier
+                    .fillMaxWidth() // because we added isLandscape boolean we can remove this line in landscape mode
+                    .onGloballyPositioned { cordinates ->
+                        textFieldSize = cordinates.size.toSize()
+                    },
+                label = { Text(text = "Conversion Type") },
+                trailingIcon = {
+                    Icon(icon, contentDescription = "icon",
+                        modifier.clickable {
+                            expanded = !expanded
+                        })
+                },
+                readOnly = true
+            )
+        }
+
+
 
         DropdownMenu(
             expanded = expanded, onDismissRequest = {
@@ -110,7 +135,7 @@ fun PreviewConversionMenu(
     converterViewModel: ConverterViewModel = viewModel()
 ) {
 
-    ConversionMenu(list = converterViewModel.getConversions()){
+    ConversionMenu(list = converterViewModel.getConversions(), isLandscape = false) {
 
     }
 }
