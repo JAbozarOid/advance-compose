@@ -31,6 +31,7 @@
             <option value="$PROJECT_DIR$/core/domain" />
             <option value="$PROJECT_DIR$/core/ui" />
             <option value="$PROJECT_DIR$/feature" />
+            <option value="$PROJECT_DIR$/feature/composenavigation" />
             <option value="$PROJECT_DIR$/feature/converter" />
             <option value="$PROJECT_DIR$/feature/interview" />
             <option value="$PROJECT_DIR$/feature/login" />
@@ -39,5 +40,6 @@
         <option name="resolveExternalAnnotations" value="false" />
       </GradleProjectSettings>
     </option>
+    <option name="offlineMode" value="true" />
   </component>
 </project>

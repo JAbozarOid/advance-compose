@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTagsAsResourceId
+import com.example.advancecompose.feature.composenavigation.navigation.DemoAppNavHost
 import com.example.advancecompose.navigation.AppNavHost
 
 @OptIn(
@@ -40,7 +41,7 @@ fun AdvanceApp(
         bottomBar = {}
     ) { padding ->
 
-        AppNavHost(
+        /*AppNavHost(
             modifier = Modifier.padding(padding),
             appState = appState,
             onShowSnackBar = { message, action ->
@@ -50,7 +51,10 @@ fun AdvanceApp(
                     duration = SnackbarDuration.Short
                 ) == SnackbarResult.ActionPerformed
             }
-        )
+        )*/
+
+        DemoAppNavHost(modifier = Modifier.padding(padding))
+
 
     }
 
