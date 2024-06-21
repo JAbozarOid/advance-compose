@@ -26,4 +26,5 @@ dependencies{
     implementation(projects.core.data)
     implementation(projects.feature.login)
     implementation(projects.feature.converter)
+    implementation(projects.feature.composenavigation)
 }
