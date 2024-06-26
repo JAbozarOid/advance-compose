@@ -1,8 +1,9 @@
-package com.example.advancecompose.feature.interview.solid
+package com.example.advancecompose.feature.interview.solid.principles
 
 import java.io.FileWriter
 
 /**
+ * the good example of this principle is RecyclerView.Adapter, we can extend the behavior but we can not modify the parent class
  * we want to have a logger class to logs messages to console
  */
 

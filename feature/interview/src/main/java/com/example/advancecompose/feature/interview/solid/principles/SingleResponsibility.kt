@@ -1,4 +1,4 @@
-package com.example.advancecompose.feature.interview.solid
+package com.example.advancecompose.feature.interview.solid.principles
 
 import java.io.File
 
