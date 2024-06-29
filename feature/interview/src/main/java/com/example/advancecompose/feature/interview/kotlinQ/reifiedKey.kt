@@ -28,7 +28,7 @@ object WithT {
     @JvmStatic
     fun main(args: Array<String>) {
         val json = "{\"name\" : \"Abozar\"}"
-        val user = Gson().fromJson<User>(json)
+        val user = Gson().fromJson<Response<User>>(json)
 
         println(user.name)
     }
@@ -38,4 +38,9 @@ object WithT {
     private inline fun <reified T> Gson.fromJson(json: String): T {
         return fromJson(json, object : TypeToken<T>(){}.type)
     }
+}
+
+class Response<T> {
+
+    val name : String = "abo"
 }
