@@ -18,4 +18,6 @@ package com.example.advancecompose.feature.interview.solid
  *      5- dependency inversion
  *          - concrete classes depend on abstract classes not the other way around
  *          - framework specific functionality depends on business logic
+ *          - high-level modules should not depend on low-level modules, but both should depend on abstractions.
+ *          - Additionally, abstractions should not depend on details, but details should depend on abstractions.
  */
