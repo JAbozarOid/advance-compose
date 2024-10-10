@@ -158,7 +158,7 @@ value class PhoneNumber(val number : String) {
 fun main() {
 
     //1-
-    val checkPhone = "+989125988667".isAPhoneNumber()
+    val checkPhone = "+989121111111".isAPhoneNumber()
     println(checkPhone)
 
     //2-

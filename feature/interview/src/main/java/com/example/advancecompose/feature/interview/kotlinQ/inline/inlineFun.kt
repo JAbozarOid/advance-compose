@@ -1,4 +1,4 @@
-package com.example.advancecompose.feature.interview.kotlinQ
+package com.example.advancecompose.feature.interview.kotlinQ.inline
 
 // tools -> kotlin -> show kotlin byte code
 
