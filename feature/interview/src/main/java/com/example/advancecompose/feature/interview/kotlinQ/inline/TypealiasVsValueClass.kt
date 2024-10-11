@@ -11,10 +11,31 @@ fun call(mobileNumber: MobileNumber) {
     println(mobileNumber)
 }
 
+/**
+ * ما میتونیم برای یک کلاس، اینترفیس یا هر تایپ دیگه با استفاده از typealias یه اسم مستعار بزاریم
+ */
+typealias Account = DataManager // *** typealias doesn't create another class, it obvious in decompile code
+class DataManager(val name : String) {
+    fun manage() {
+
+    }
+}
+
+// when decompile the two below codes we can see both of them are DataManager object
+val account = Account("Abozar") // there is not Account in compile time, Account is DataManager
+val data = DataManager("Raghib")
+
 fun main() {
 
     // we can pass MobileNumber and String pass to this function, because both of them are same
 
     call(mobileNumber = "989121111111")
     call("  abcd")
+
+    account.manage()
+
 }
+
+
+
+

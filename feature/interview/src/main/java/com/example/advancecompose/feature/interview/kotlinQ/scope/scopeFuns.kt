@@ -66,11 +66,11 @@ import kotlin.random.Random
 internal fun testScope() {
     val str = "Abozar"
 
-    str.run {
+     str.run {
         println("the length is $length")
     }
 
-    str.let {
+     str.let {
         println("the length is ${it.length}")
     }
 }

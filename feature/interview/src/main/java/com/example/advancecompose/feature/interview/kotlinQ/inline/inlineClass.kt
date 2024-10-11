@@ -1,5 +1,8 @@
 package com.example.advancecompose.feature.interview.kotlinQ.inline
 
+// https://www.martinfowler.com/ieeeSoftware/whenType.pdf
+// https://typealias.com/guides/inline-classes-and-autoboxing/
+
 /**
  * when we use inline classes, it means the body of class will be inline, it means the body will be copy and paste
  */
