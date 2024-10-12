@@ -8,7 +8,7 @@ package com.example.advancecompose.feature.interview.android
  *      D- Destroyed
  *
  * 2- What is content provider and what is it typically used for
- *      - Is a component that enables apps ti manage and share data securely with other apps
+ *      - Is a component that enables apps to manage and share data securely with other apps
  *      - data sharing : share data between different applications
  *      - CRUD operations
  *      - Accessing Contacts
