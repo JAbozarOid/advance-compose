@@ -1,6 +1,5 @@
 package com.example.advancecompose.feature.interview.compose
 
-import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,9 +9,9 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
-import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -77,6 +76,7 @@ fun Screen() {
     var shouldNavigate by remember {
         mutableStateOf(false)
     }
+
 
     Button(onClick = { shouldNavigate = true }) { }
 
@@ -163,12 +163,15 @@ fun TitleBarSolution(title: String, scroll: () -> Int) {
  * # 1
  * not using derived state of
  * derived state of receive a function to know how to produce a state
+ * مادامی که فانکشن منجر به تغییر استیت نشه هیچ جیزی ریکامپوز نمیشه
+ * derived state of : when a value inside of the derived state of is changed -> state will be changed
  */
 
 
 @Preview
 @Composable
 fun ContactListPreview() {
+
     Column {
         ContactList(listOf(Contact(name = "Abozar"), Contact(name = "Shirin")))
         ContactListWithKeys(
