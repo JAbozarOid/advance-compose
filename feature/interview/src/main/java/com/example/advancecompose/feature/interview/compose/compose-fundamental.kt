@@ -10,6 +10,7 @@ package com.example.advancecompose.feature.interview.compose
  *     - carry changeable values
  *
  * Recomposition
+ *      - The process of updating a Compose UI is called recomposition
  *      - Certain types trigger a so-called recomposition
  *      - MutableState is such a type. If we change its value, the TextField() composable is redrawn or repainted
  *
@@ -18,6 +19,7 @@ package com.example.advancecompose.feature.interview.compose
  *
  * state
  *     - state in an app refers to a value that can change over time
+ *     - Values that change over time are called state
  *
  * State Hoisting
  *      - when a composable function create and remember state by invoking mutableStateOf and remember, and it passes to another composable function
@@ -34,4 +36,9 @@ package com.example.advancecompose.feature.interview.compose
  *
  * Compose-bom
  *      - bom : bill of material
+ *
+ * Composition over inheritance
+ *      - This means the look and the behavior of a UI element (and
+ *        the complete UI) are defined by combining simple building blocks, such as Container, Padding,
+ *        Align, or GestureDetector, rather than modifying a parent
  */
