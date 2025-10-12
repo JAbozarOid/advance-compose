@@ -5,7 +5,7 @@ import kotlinx.coroutines.CoroutineScope
 /**
  * Async programming
  * 1- parallel operation
- * 2- concurrent operation
+ * 2-concurrent operation
  *
  * ** Technologies for concurrent operation
  * A - Thread
